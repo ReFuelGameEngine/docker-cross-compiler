@@ -12,7 +12,11 @@ jobs:
         run: apt update -y
       - name: Gather dependencies.
         run: apt install -y docker.io
+      - name: Log into Docker registry.
+        run: "echo  ${{secrets.QUIK_API_KEY}} > docker login -u themixedupstuff --password-stdin git.mixedup.dev"
       - name: Check repository out.
         uses: actions/checkout@v3
       - name: Build Docker Image
-        run: docker build -t quik/docker-cross-compiler
+        run: docker build -t git.mixedup.dev/QUIK/docker-cross-compiler
+      - name: Upload Docker Image
+        name: docker push git.mixedup.dev/QUIK/docker-cross-compiler
