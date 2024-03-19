@@ -13,7 +13,7 @@ jobs:
       - name: Gather dependencies.
         run: apt install -y docker.io
       - name: Log into Docker registry.
-        run: "echo  ${{secrets.QUIK_API_KEY}} > docker login -u themixedupstuff --password-stdin git.mixedup.dev"
+        run: "echo  ${{secrets.QUIK_API_KEY}} | docker login -u themixedupstuff --password-stdin git.mixedup.dev"
       - name: Check repository out.
         uses: actions/checkout@v3
       - name: Build Docker Image
