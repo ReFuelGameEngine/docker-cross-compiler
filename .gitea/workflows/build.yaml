@@ -19,4 +19,4 @@ jobs:
       - name: Build Docker Image
         run: docker build -t git.mixedup.dev/QUIK/docker-cross-compiler .
       - name: Upload Docker Image
-        name: docker push git.mixedup.dev/QUIK/docker-cross-compiler
+        run: docker push git.mixedup.dev/QUIK/docker-cross-compiler
