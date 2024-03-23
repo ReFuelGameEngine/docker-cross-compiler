@@ -40,7 +40,7 @@ RUN echo docker_cross_compiler > /etc/hostname
         meson \
         nuget \
         ninja-build \
-        node \
+        nodejs \
         patch \
         python3 \
         xz-utils \
