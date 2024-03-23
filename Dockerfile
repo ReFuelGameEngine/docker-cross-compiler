@@ -37,8 +37,10 @@ RUN echo docker_cross_compiler > /etc/hostname
         libxml2-dev \
         lzma-dev \
         mingw-w64 \
+        meson \
         nuget \
         ninja-build \
+        node \
         patch \
         python3 \
         xz-utils \
