@@ -26,15 +26,18 @@ RUN echo docker_cross_compiler > /etc/hostname
         cmake \
         clang \
         cpio \
+        curl \
         dotnet-sdk-6.0 \
         gcc-arm-linux-gnueabihf \
         gcc-aarch64-linux-gnu \
         gcc-i686-linux-gnu \
         git \
+        libbz2-dev \
         libharfbuzz-dev \
         libpng-dev \
         libssl-dev \
         libxml2-dev \
+        llvm \
         lzma-dev \
         mingw-w64 \
         meson \
@@ -43,12 +46,21 @@ RUN echo docker_cross_compiler > /etc/hostname
         nodejs \
         patch \
         python3 \
+        uuid \
         xz-utils \
         zlib1g-dev
 
     # Clone osxcross
     # Let's do this later.
-    # RUN git clone https://github.com/tpoechtrager/osxcross.git osxcross
+    RUN git clone --recurse-submodules "https://github.com/tpoechtrager/osxcross.git" osxcross
+
+    # Download packaged SDK from this random github (very safe i know)
+    WORKDIR /root/osxcross/tarballs
+    RUN wget "https://github.com/joseluisq/macosx-sdks/releases/download/14.0/MacOSX14.0.sdk.tar.xz" -O "MacOSX14.0.sdk.tar.xz"
+    
+    WORKDIR /root/osxcross
+    ENV UNATTENDED=1 TARGET_DIR=/usr/local SDK_DIR=/usr/local/osxcross-sdk
+    RUN bash -c "./build.sh"
 
 # Setup interactive shell.
     # Setup sudo. Remove password prompt for group "wheel".
@@ -56,12 +68,14 @@ RUN echo docker_cross_compiler > /etc/hostname
 
     # Create a default user and switch.
     RUN adduser --comment "" --disabled-password quik
+    RUN addgroup wheel
+    RUN usermod -aG wheel quik
     USER quik
     WORKDIR /home/quik
 
     # Copy bashrc
     RUN cp /etc/bash.bashrc ~/.bashrc
-    RUN echo source $HOME/src/sh/bashrc.sh >> ~/.bashrc
+    COPY sh/bashrc.sh /home/quik/.bashrc
 
 # Execute an interactive shell.
 CMD bash
