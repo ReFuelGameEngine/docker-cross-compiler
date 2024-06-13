@@ -2,7 +2,8 @@ name: Build
 run-name: Building docker container.
 on:
   push:
-    branches: stable
+    tags:
+      - '*'
 
 jobs:
   build:
@@ -13,10 +14,14 @@ jobs:
       - name: Gather dependencies.
         run: apt install -y docker.io
       - name: Log into Docker registry.
-        run: "echo  ${{secrets.QUIK_API_KEY}} | docker login -u themixedupstuff --password-stdin git.mixedup.dev"
+        run: "echo ${{secrets.REFUEL_API_KEY}} | docker login -u ${{vars.DOCKER_USER_NAME}} --password-stdin git.mixedup.dev"
       - name: Check repository out.
         uses: actions/checkout@v3
       - name: Build Docker Image
-        run: docker build -t git.mixedup.dev/quik/docker-cross-compiler .
+        run: "docker build -t git.mixedup.dev/refuel/docker-cross-compiler:${{gitea.ref_name}} ."
       - name: Upload Docker Image
-        run: docker push git.mixedup.dev/quik/docker-cross-compiler
+        run: "docker push git.mixedup.dev/refuel/docker-cross-compiler:${{gitea.ref_name}}"
+      - name: Alias image as latest and push.
+        run: |
+          docker tag git.mixedup.dev/refuel/docker-cross-compiler:${{gitea.ref_name}} git.mixedup.dev/refuel/docker-cross-compiler:latest && \
+          docker push git.mixedup.dev/refuel/docker-cross-compiler:latest
