@@ -6,7 +6,7 @@ fi
 
 if [ -z "$NUGET_API_KEY" ]
 then
-    echo "Please define QUIK_API_KEY"
+    echo "Please define NUGET_API_KEY"
     exit 1
 fi
 
