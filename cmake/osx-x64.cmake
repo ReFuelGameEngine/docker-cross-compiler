@@ -1,4 +1,4 @@
-# QUIK Toolchain file for OSX-ARM64 systems.
+# ReFuel Toolchain file for OSX-ARM64 systems.
 # Copyright (C) 2024
 
 set(CMAKE_SYSTEM_NAME OSX)

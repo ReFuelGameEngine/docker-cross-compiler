@@ -1,4 +1,4 @@
-# QUIK Toolchain file for Linux-arm systems.
+# ReFuel Toolchain file for Linux-arm systems.
 # Copyright (C) 2023
 
 set(CMAKE_SYSTEM_NAME Linux)

@@ -26,7 +26,7 @@ fi
 
 if [ -z "$CMAKE_DIR"]
 then
-    CMAKE_DIR="$SRC/Quik.Common/cmake"
+    CMAKE_DIR="$SRC/docker-cross-compiler/cmake"
 fi
 
 for ARCH in $ARCHS; do

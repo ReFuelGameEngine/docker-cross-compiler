@@ -64,18 +64,18 @@ RUN echo docker_cross_compiler > /etc/hostname
 
 # Setup interactive shell.
     # Setup sudo. Remove password prompt for group "wheel".
-    RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/quik_sudo_conf
+    RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/refuel_sudo_conf
 
     # Create a default user and switch.
-    RUN adduser --comment "" --disabled-password quik
+    RUN adduser --comment "" --disabled-password refuel
     RUN addgroup wheel
-    RUN usermod -aG wheel quik
-    USER quik
-    WORKDIR /home/quik
+    RUN usermod -aG wheel refuel
+    USER refuel
+    WORKDIR /home/refuel
 
     # Copy bashrc
     RUN cp /etc/bash.bashrc ~/.bashrc
-    COPY sh/bashrc.sh /home/quik/.bashrc
+    COPY sh/bashrc.sh /home/refuel/.bashrc
 
 # Execute an interactive shell.
 CMD bash
