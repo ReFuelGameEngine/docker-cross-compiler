@@ -1,4 +1,4 @@
-# QUIK Toolchain file for Windows-x64 systems.
+# ReFuel Toolchain file for Windows-x64 systems.
 # Copyright (C) 2023
 
 set(CMAKE_SYSTEM_NAME Windows)

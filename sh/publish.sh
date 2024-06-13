@@ -4,15 +4,27 @@ then
     $1 = $(dirname "$0")
 fi
 
-if [ -z "$QUIK_API_KEY" ]
+if [ -z "$NUGET_API_KEY" ]
 then
     echo "Please define QUIK_API_KEY"
     exit 1
 fi
 
+if [ -z "$NUGET_USER_NAME" ]
+then
+    echo "Please define NUGET_USER_NAME"
+    exit 1
+fi
+
+if [ -z "$NUGET_INDEX" ]
+then
+    echo "Please define NUGET_INDEX"
+    exit 1
+fi
+
 cd $1
 dotnet nuget add source \
-    -n QUIK -u themixedupstuff -p "$QUIK_API_KEY" \
+    -n ReFuel -u "$NUGET_USER_NAME" -p "$NUGET_API_KEY" \
     --store-password-in-clear-text \
-    https://git.mixedup.dev/api/packages/QUIK/nuget/index.json 
-dotnet nuget push -s QUIK bin/*/*.nupkg
+    "$NUGET_INDEX"
+dotnet nuget push -s ReFuel bin/*/*.nupkg

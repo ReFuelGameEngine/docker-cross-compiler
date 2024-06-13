@@ -1,4 +1,4 @@
-# QUIK Toolchain file for Linux-x86 (i386) systems.
+# ReFuel Toolchain file for Linux-x86 (i386) systems.
 # Copyright (C) 2023
 
 set(CMAKE_SYSTEM_NAME Linux)
