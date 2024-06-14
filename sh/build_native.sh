@@ -43,8 +43,6 @@ for ARCH in $ARCHS; do
     cmake -B $BUILD -S $SRC \
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_C_FLAGS=-static-libgcc \
-        -DCMAKE_CXX_FLAGS=-static-libgcc \
         -DCMAKE_INSTALL_PREFIX=$PREFIX \
         -DCMAKE_TOOLCHAIN_FILE=$TOOLCHAIN \
         $QUIK_ADDITIONAL_CMAKE
