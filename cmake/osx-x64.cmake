@@ -1,7 +1,7 @@
 # ReFuel Toolchain file for OSX-ARM64 systems.
 # Copyright (C) 2024
 
-set(CMAKE_SYSTEM_NAME OSX)
+set(CMAKE_SYSTEM_NAME Darwin)
 
 set(CMAKE_C_COMPILER x86_64-apple-darwin23-clang)
 set(CMAKE_CXX_COMPILER x86_64-apple-darwin23-clang++)
