@@ -16,7 +16,7 @@ fi
 
 if [ -z "$ARCHS" ]
 then
-    ARCHS="linux-arm linux-arm64 linux-x64 win-x64 win-x86"
+    ARCHS="linux-arm linux-arm64 linux-x64 win-x64 win-x86 osx-arm64 osx-x64"
 fi
 
 if [ -z "$DST" ]
