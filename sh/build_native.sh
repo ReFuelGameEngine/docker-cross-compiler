@@ -45,7 +45,7 @@ for ARCH in $ARCHS; do
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=$PREFIX \
         -DCMAKE_TOOLCHAIN_FILE=$TOOLCHAIN \
-        $QUIK_ADDITIONAL_CMAKE
+        $REFUEL_ADDITIONAL_CMAKE
 
     # Build and install.
     ninja -C $BUILD all
