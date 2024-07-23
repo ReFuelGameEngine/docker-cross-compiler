@@ -18,7 +18,7 @@ jobs:
       - name: Check repository out.
         uses: actions/checkout@v3
       - name: Build Docker Image
-        run: "docker build -t git.mixedup.dev/refuel/docker-cross-compiler:${{gitea.ref_name}} ."
+        run: "docker build -t --no-cache git.mixedup.dev/refuel/docker-cross-compiler:${{gitea.ref_name}} ."
       - name: Upload Docker Image
         run: "docker push git.mixedup.dev/refuel/docker-cross-compiler:${{gitea.ref_name}}"
       - name: Alias image as latest and push.
