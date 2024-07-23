@@ -28,6 +28,7 @@ RUN echo docker_cross_compiler > /etc/hostname
         cpio \
         curl \
         dotnet-sdk-6.0 \
+        dotnet-sdk-8.0 \
         gcc-arm-linux-gnueabihf \
         gcc-aarch64-linux-gnu \
         gcc-i686-linux-gnu \
